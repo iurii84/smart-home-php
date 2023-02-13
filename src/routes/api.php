@@ -14,10 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+//the routes for all API calls
+Route::group(array('prefix' => '/v1'), function () {
+    Route::group(array('prefix' => '/login'), function () {
+        Route::post('/access-token', function (Request $request) {
+            // fake access token - TODO need to be implemented
+            return '{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY5Mzk2NjksInN1YiI6IjMifQ.XHFeWT1hBf5scSAtnNWB71hP3QJoIlkAHLFxIRHPZCg","token_type":"bearer"}';
+        });
+    });
+
+    Route::group(array('prefix' => '/message'), function () {
+        Route::get('/', function (Request $request) {
+            return 'Message get OK';
+        });
+
+        Route::post('/', function (Request $request) {
+            return 'Message post OK';
+        });
+    });
 });
 
-Route::get('/test', function (Request $request) {
-    return 'test';
-});
