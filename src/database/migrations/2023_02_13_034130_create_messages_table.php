@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('temp')->index();
             $table->float('hum')->index();
             $table->smallInteger('compress_ratio')->default(0);
-            $table->timestamp('created_at')->index();
+            $table->timestamp('created')->index();
         });
     }
 
