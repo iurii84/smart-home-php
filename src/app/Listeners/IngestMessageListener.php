@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\IngestMessageEvent;
+use App\Jobs\ProcessMessage;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
@@ -27,6 +28,6 @@ class IngestMessageListener
      */
     public function handle(IngestMessageEvent $event)
     {
-        Log::alert(json_encode($event->message));
+        ProcessMessage::dispatch($event->message);
     }
 }
