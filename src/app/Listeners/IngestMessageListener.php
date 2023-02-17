@@ -23,11 +23,11 @@ class IngestMessageListener
     /**
      * Handle the event.
      *
-     * @param  \App\Events\IngestMessageEvent  $event
+     * @param IngestMessageEvent $event
      * @return void
      */
     public function handle(IngestMessageEvent $event)
     {
-        ProcessMessage::dispatch($event->message);
+        ProcessMessage::dispatch($event->message_dto);
     }
 }

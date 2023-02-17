@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\DTO\MessageDTO;
 use App\Models\Message;
 use http\Client\Request;
 use Illuminate\Broadcasting\Channel;
@@ -22,10 +23,10 @@ class IngestMessageEvent
      *
      * @return void
      */
-    public array $message;
-    public function __construct(array $message)
+    public MessageDTO $message_dto;
+    public function __construct(MessageDTO $message_dto)
     {
-        $this->message = $message;
+        $this->message_dto = $message_dto;
     }
 
     /**

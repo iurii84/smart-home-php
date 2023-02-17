@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\DTO\MessageDTO;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -19,10 +20,10 @@ class ProcessMessage implements ShouldQueue
      *
      * @return void
      */
-    public array $message;
-    public function __construct(array $message)
+    public MessageDTO $message_dto;
+    public function __construct(MessageDTO $message_dto)
     {
-        $this->message = $message;
+        $this->message_dto = $message_dto;
     }
 
     /**
@@ -32,6 +33,6 @@ class ProcessMessage implements ShouldQueue
      */
     public function handle()
     {
-        Log::critical(json_encode($this->message));
+        Log::critical(json_encode($this->message_dto));
     }
 }
