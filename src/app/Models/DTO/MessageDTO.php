@@ -34,6 +34,6 @@ class MessageDTO
         $this->temp = $temp;
         $this->hum = $hum;
         $this->compress_ratio = $compress_ratio;
-        $this->created = date("Y-m-d H:i:s");;
+        $this->created = date("Y-m-d H:i:s");
     }
 }

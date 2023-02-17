@@ -31,7 +31,7 @@ class MessageController extends Controller
             type: $type,
             temp: $temp,
             hum: $hum,
-            compress_ratio: $compress_ratio);
+            compress_ratio: 0);
         IngestMessageEvent::dispatch($message_dto);
 
     }

@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\DTO\MessageDTO;
+use App\Models\Message;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -33,6 +34,8 @@ class ProcessMessage implements ShouldQueue
      */
     public function handle()
     {
+        Message::create((array) $this->message_dto);
+
         Log::critical(json_encode($this->message_dto));
     }
 }
