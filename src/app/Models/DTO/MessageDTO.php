@@ -2,8 +2,6 @@
 
 namespace App\Models\DTO;
 
-use DateTime;
-
 class MessageDTO
 {
     public int | null $id;
