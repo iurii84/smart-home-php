@@ -42,4 +42,8 @@ class Message extends Model
         'compress_ratio'
     ];
 
+    public function device() {
+        return $this->hasOne(Device::class, 'uuid', 'uuid');
+    }
+
 }

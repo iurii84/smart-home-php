@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,10 @@ Route::group(array('prefix' => '/v1'), function () {
         Route::get('/', [MessageController::class, 'get']);
 
         Route::post('/', [MessageController::class, 'post']);
+    });
+
+    Route::group(array('prefix' => '/device'), function () {
+        Route::get('/get_unregistered', [DeviceController::class, 'get_unregistered']);
     });
 });
 
