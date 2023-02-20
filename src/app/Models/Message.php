@@ -46,4 +46,8 @@ class Message extends Model
         return $this->hasOne(Device::class, 'uuid', 'uuid');
     }
 
+    public function type() {
+        return $this->hasOne(DeviceType::class, 'type_id', 'type');
+    }
+
 }

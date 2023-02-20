@@ -12,10 +12,19 @@ class Device extends Model
         'name',
         'uuid',
         'type',
-        'location'
+        'location',
+        'first_occurrence'
     ];
 
-    public function devices() {
+    public function messages() {
         return $this->hasMany(Message::class, 'uuid', 'uuid');
+    }
+
+    public function type() {
+        return $this->hasOne(DeviceType::class, 'type_id', 'type');
+    }
+
+    public function location() {
+        return $this->hasOne(DeviceLocation::class, 'location_id', 'location');
     }
 }

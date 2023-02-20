@@ -31,8 +31,15 @@ Route::group(array('prefix' => '/v1'), function () {
         Route::post('/', [MessageController::class, 'post']);
     });
 
-    Route::group(array('prefix' => '/device'), function () {
-        Route::get('/get_unregistered', [DeviceController::class, 'get_unregistered']);
+    Route::group(array('prefix' => '/devices'), function () {
+        Route::get('/', [DeviceController::class, 'get']);
+        Route::post('/', [DeviceController::class, 'register']);
+        Route::delete('/{device_id}', [DeviceController::class, 'delete']);
+        Route::patch('/{device_id}', [DeviceController::class, 'update']);
+
+        Route::get('/unregistered', [DeviceController::class, 'get_unregistered']);
+        Route::get('/locations', [DeviceController::class, 'get_locations']);
+        Route::get('/types', [DeviceController::class, 'get_types']);
     });
 });
 

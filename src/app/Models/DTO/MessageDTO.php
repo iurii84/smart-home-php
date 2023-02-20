@@ -13,6 +13,7 @@ class MessageDTO
     public string $created;
 
     /**
+     * @param int|null $id
      * @param string $uuid
      * @param int $type
      * @param float $temp
