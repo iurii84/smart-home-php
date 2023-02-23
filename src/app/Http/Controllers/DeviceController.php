@@ -15,7 +15,7 @@ class DeviceController extends Controller
 {
     public function get(Request $request, DeviceService $deviceService)
     {
-        $is_display = $request->get('is_display');
+        $is_display =filter_var($request->get('is_display'), FILTER_VALIDATE_BOOLEAN);
         return $deviceService->get(is_display: $is_display);
     }
     public function register(Request $request, DeviceService $deviceService)

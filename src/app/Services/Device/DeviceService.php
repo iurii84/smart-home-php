@@ -5,6 +5,8 @@ namespace App\Services\Device;
 use App\Models\Device;
 use App\Models\DTO\DeviceDTO;
 use App\Models\Message;
+
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -28,8 +30,19 @@ class DeviceService
 
     public function get($is_display)
     {
-        return Device::with('type')->get();
+        if ($is_display) {
+            return Device::whereHas('type', function ($query) {
+                $query->whereNotNull('screen_type');
+            })->get();
+        }
+        else {
+            return Device::whereHas('type', function ($query) {
+                $query->whereNull('screen_type');
+            })->get();
+        }
     }
+
+
 
     public function register(DeviceDTO $deviceDTO)
     {
