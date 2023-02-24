@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\DeviceDataBindController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,11 @@ Route::group(array('prefix' => '/v1'), function () {
         Route::get('/unregistered', [DeviceController::class, 'get_unregistered']);
         Route::get('/locations', [DeviceController::class, 'get_locations']);
         Route::get('/types', [DeviceController::class, 'get_types']);
+    });
+
+    Route::group(array('prefix' => '/device_data_bind'), function () {
+        Route::get('/', [DeviceDataBindController::class, 'get']);
+
     });
 });
 

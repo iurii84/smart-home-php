@@ -36,9 +36,7 @@ class DeviceService
             })->get();
         }
         else {
-            return Device::whereHas('type', function ($query) {
-                $query->whereNull('screen_type');
-            })->get();
+            return Device::get();
         }
     }
 
