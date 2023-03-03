@@ -39,7 +39,8 @@ class Message extends Model
         'type',
         'temp',
         'hum',
-        'compress_ratio'
+        'compress_ratio',
+        'created'
     ];
 
     public function device() {
